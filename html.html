@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GradeCalculator</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="text.css">
+
+</head>
+<body>
+
+<div id="title" class="title">Calculate Your Grade!</div>
+<!--<input type="text" id="hw_wgt" value="" size="5" placeholder="Hw weight">-->
+<!--<input type="text" id="qz_wgt" value="" size="5" placeholder="Quiz weight">-->
+<!--<input type="text" id="tst_wgt" value="" size="5" placeholder="Test weight">-->
+<!--<input type="text" id="fnl_wgt" value="" size="5" placeholder="Final weight">-->
+<!--<input type="text" id="hw" value="" size="5" placeholder="Hw Grades">-->
+<!--<input type="text" id="qz" value="" size="5" placeholder="Quiz Grades">-->
+<!--<input type="text" id="tst" value="" size="5" placeholder="Test Grades">-->
+<!--<input type="text" id="fnl" value="" size="5" placeholder="Final Grade">-->
+
+<br>
+<br>
+<br>
+<table style="width: 100%">
+    <tr>
+        <th class="tableTitles">Categories</th>
+        <th class="tableTitles">Grades</th>
+        <th class="tableTitles">Weights</th>
+    </tr>
+    <tr>
+        <td class="text">Homework</td>
+        <td class="text"><input type="text" id="hw" value="100,70,30,50,90" size="15" placeholder="Hw Grades"></td>
+        <td class="text"><input type="text" id="hw_wgt" value="20" size="15" placeholder="Hw weight" ></td>
+    </tr>
+    <tr>
+        <td class="text">Quiz</td>
+        <td class="text"><input type="text" id="qz" value="100,80,90,87" size="15" placeholder="Quiz Grades" ></td>
+        <td class="text"><input type="text" id="qz_wgt" value="20" size="15" placeholder="Quiz weight" ></td>
+    </tr>
+    <tr>
+        <td class="text">Test</td>
+        <td class="text"><input type="text" id="tst" value="100,99,70,98" size="15" placeholder="Test Grades" ></td>
+        <td class="text"><input type="text" id="tst_wgt" value="20" size="15" placeholder="Test weight" ></td>
+    </tr>
+    <tr>
+        <td class="text">Final</td>
+        <td class="text"><input type="text" id="fnl" value="" size="15" placeholder="Final Grade"></td>
+        <td class="text"><input type="text" id="fnl_wgt" value="40" size="15" placeholder="Final weight" ></td>
+    </tr>
+    <tr>
+        <td class="specText">press to calculate your current grade WITHOUT final grade</td>
+        <td class="specText">press to calculate your current grade WITH final grade</td>
+        <td class="specText">Press to calculate the grade you need to get <br> on your final to get an A in the class</td>
+    </tr>
+    <tr>
+        <td class="text"><button onclick="calculateCurrentWithoutFnl()">Calculate grade</button></td>
+        <td class="text"> <button onclick="calculateCurrentWithFnl()">Calculate grade</button></td>
+        <td class="text"> <button onclick="calculateNeedForA()">Calculate grade</button></td>
+    </tr>
+</table>
+<div id="notification" class="title"></div>
+<div id="result" class="title"></div>
+
+
+</body>
+</html>

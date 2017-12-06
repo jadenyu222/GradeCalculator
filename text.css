@@ -1,0 +1,24 @@
+.title{
+    font-size: 50px;
+    color: #b7bff0;
+}
+
+.specText{
+    font-size: 20px;
+    color: #ff9a45;
+}
+
+.text{
+    font-size: 20px;
+    color: #f08683;
+}
+
+.tableTitles{
+    font-size: 35px;
+    color: #49f04a;
+}
+body{
+    background-image: url("http://mobileadvertisingwatch.com/wp-content/uploads/2015/02/Advertising-by-the-Numbers-Its-Big-Business-With-Big-Numbers-to-Match.jpg");
+    vertical-align: top;
+    text-align: center;
+}
