@@ -28,7 +28,7 @@ function checkWeight(array){
     for(var i = 0; i < array.length; i++){
         sum+= array[i];
     }
-    return (sum === 100);
+    return (sum === 1);
 }
 
 
@@ -41,17 +41,17 @@ function calculateNeedForA(){
     var qz = avg(convertStringToArray(document.getElementById("qz").value));
     var tst = avg(convertStringToArray(document.getElementById("tst").value));
 
-    var hw_wgt = parseInt(document.getElementById("hw_wgt").value);
-    var qz_wgt = parseInt(document.getElementById("qz_wgt").value);
-    var tst_wgt = parseInt(document.getElementById("tst_wgt").value);
-    var fnl_wgt = parseInt(document.getElementById("fnl_wgt").value);
+    var hw_wgt = (parseInt(document.getElementById("hw_wgt").value)) / 100;
+    var qz_wgt = (parseInt(document.getElementById("qz_wgt").value)) / 100;
+    var tst_wgt = (parseInt(document.getElementById("tst_wgt").value)) / 100;
+    var fnl_wgt = (parseInt(document.getElementById("fnl_wgt").value)) / 100;
     var totalWeight = [hw_wgt,qz_wgt,tst_wgt,fnl_wgt];
-    var totalWithoutFnl = ((hw * hw_wgt) + (qz * qz_wgt) + (tst * tst_wgt));
-    var necesaryGrade = (-1 * ((90 - totalWithoutFnl) / fnl_wgt));
+    var totalWithoutFnl = (((hw * hw_wgt) + (qz * qz_wgt) + (tst * tst_wgt)));
+    var necesaryGrade = (((90 - totalWithoutFnl) / fnl_wgt));
 
     if(checkWeight(totalWeight) === true){
         clearNotification();
-        returnNecessaryGrade(necesaryGrade);
+        returnNecessaryGrade(Math.round(necesaryGrade));
 
     }else{
         error();
@@ -65,16 +65,16 @@ function calculateCurrentWithFnl(){
     var tst = avg(convertStringToArray(document.getElementById("tst").value));
     var fnl = avg(convertStringToArray(document.getElementById("fnl").value));
 
-    var hw_wgt = parseInt(document.getElementById("hw_wgt").value);
-    var qz_wgt = parseInt(document.getElementById("qz_wgt").value);
-    var tst_wgt = parseInt(document.getElementById("tst_wgt").value);
-    var fnl_wgt = parseInt(document.getElementById("fnl_wgt").value);
+    var hw_wgt = (parseInt(document.getElementById("hw_wgt").value)) / 100;
+    var qz_wgt = (parseInt(document.getElementById("qz_wgt").value)) / 100;
+    var tst_wgt = (parseInt(document.getElementById("tst_wgt").value)) / 100;
+    var fnl_wgt = (parseInt(document.getElementById("fnl_wgt").value)) / 100;
     var totalWeight = [hw_wgt,qz_wgt,tst_wgt,fnl_wgt];
-    var total = (((hw * hw_wgt) + (qz * qz_wgt) + (tst * tst_wgt) + (fnl * fnl_wgt)) / 100);
+    var total = (((hw * hw_wgt) + (qz * qz_wgt) + (tst * tst_wgt) + (fnl * fnl_wgt)));
 
     if(checkWeight(totalWeight) === true){
         clearNotification();
-        returnGrade(total);
+        returnGrade(Math.round(total));
 
     }else{
         error();
@@ -88,15 +88,15 @@ function calculateCurrentWithoutFnl(){
     var tst = avg(convertStringToArray(document.getElementById("tst").value));
 
 
-    var hw_wgt = parseInt(document.getElementById("hw_wgt").value);
-    var qz_wgt = parseInt(document.getElementById("qz_wgt").value);
-    var tst_wgt = parseInt(document.getElementById("tst_wgt").value);
-    var fnl_wgt = parseInt(document.getElementById("fnl_wgt").value);
+    var hw_wgt = (parseInt(document.getElementById("hw_wgt").value)) / 100;
+    var qz_wgt = (parseInt(document.getElementById("qz_wgt").value)) / 100;
+    var tst_wgt = (parseInt(document.getElementById("tst_wgt").value)) / 100;
+    var fnl_wgt = (parseInt(document.getElementById("fnl_wgt").value)) / 100;
     var totalWeight = [hw_wgt,qz_wgt,tst_wgt,fnl_wgt];
-    var totalWithoutFnl = (((hw * hw_wgt) + (qz * qz_wgt) + (tst * tst_wgt)) / 100);
+    var totalWithoutFnl = (((hw * hw_wgt) + (qz * qz_wgt) + (tst * tst_wgt)));
     if(checkWeight(totalWeight) === true){
         clearNotification();
-        returnGrade(totalWithoutFnl);
+        returnGrade(Math.round(totalWithoutFnl));
 
     }else{
         error();
