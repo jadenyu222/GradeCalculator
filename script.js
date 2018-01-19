@@ -33,33 +33,7 @@ function checkWeight(array){
 
 
 
-
-
-
-function calculateNeedForA(){
-    var hw = avg(convertStringToArray(document.getElementById("hw").value));
-    var qz = avg(convertStringToArray(document.getElementById("qz").value));
-    var tst = avg(convertStringToArray(document.getElementById("tst").value));
-
-    var hw_wgt = (parseInt(document.getElementById("hw_wgt").value)) / 100;
-    var qz_wgt = (parseInt(document.getElementById("qz_wgt").value)) / 100;
-    var tst_wgt = (parseInt(document.getElementById("tst_wgt").value)) / 100;
-    var fnl_wgt = (parseInt(document.getElementById("fnl_wgt").value)) / 100;
-    var totalWeight = [hw_wgt,qz_wgt,tst_wgt,fnl_wgt];
-    var totalWithoutFnl = (((hw * hw_wgt) + (qz * qz_wgt) + (tst * tst_wgt)));
-    var necesaryGrade = (((90 - totalWithoutFnl) / fnl_wgt));
-
-    if(checkWeight(totalWeight) === true){
-        clearNotification();
-        returnNecessaryGrade(Math.round(necesaryGrade));
-
-    }else{
-        error();
-    }
-
-}
-
-function calculateCurrentWithFnl(){
+function calculate(condition){
     var hw = avg(convertStringToArray(document.getElementById("hw").value));
     var qz = avg(convertStringToArray(document.getElementById("qz").value));
     var tst = avg(convertStringToArray(document.getElementById("tst").value));
@@ -71,37 +45,44 @@ function calculateCurrentWithFnl(){
     var fnl_wgt = (parseInt(document.getElementById("fnl_wgt").value)) / 100;
     var totalWeight = [hw_wgt,qz_wgt,tst_wgt,fnl_wgt];
     var total = (((hw * hw_wgt) + (qz * qz_wgt) + (tst * tst_wgt) + (fnl * fnl_wgt)));
-
-    if(checkWeight(totalWeight) === true){
+    //find sum all weights-finalweight
+    var totalWithoutFnl = ((hw * ((hw_wgt / (1 - fnl_wgt))) + (qz * (qz_wgt / (1 - fnl_wgt))) + (tst * (tst_wgt / (1 - fnl_wgt)))));
+    var necesaryGrade = (((90 - totalWithoutFnl) / fnl_wgt));
+    if(checkWeight(totalWeight) === true) {
         clearNotification();
-        returnGrade(Math.round(total));
-
+        if (condition === 0) {
+            returnNecessaryGrade(Math.round(necesaryGrade));
+        }
+        if (condition === 1) {
+            if(fnl != NaN){
+                returnGrade(Math.round(total));
+            }else{
+                error();
+            }
+        }
+        if (condition === 2) {
+            returnGrade(Math.round(totalWithoutFnl));
+        }
     }else{
         error();
     }
+
 
 }
 
+//0 = need for a, 1 = current with final, 2 = current without final
+
+function calculateNeedForA(){
+    calculate(0);
+}
+
+
+function calculateCurrentWithFnl(){
+    calculate(1);
+}
+
 function calculateCurrentWithoutFnl(){
-    var hw = avg(convertStringToArray(document.getElementById("hw").value));
-    var qz = avg(convertStringToArray(document.getElementById("qz").value));
-    var tst = avg(convertStringToArray(document.getElementById("tst").value));
-
-
-    var hw_wgt = (parseInt(document.getElementById("hw_wgt").value)) / 100;
-    var qz_wgt = (parseInt(document.getElementById("qz_wgt").value)) / 100;
-    var tst_wgt = (parseInt(document.getElementById("tst_wgt").value)) / 100;
-    var fnl_wgt = (parseInt(document.getElementById("fnl_wgt").value)) / 100;
-    var totalWeight = [hw_wgt,qz_wgt,tst_wgt,fnl_wgt];
-    var totalWithoutFnl = (((hw * hw_wgt) + (qz * qz_wgt) + (tst * tst_wgt)));
-    if(checkWeight(totalWeight) === true){
-        clearNotification();
-        returnGrade(Math.round(totalWithoutFnl));
-
-    }else{
-        error();
-    }
-
+    calculate(2);
 }
 
 
